@@ -10,14 +10,18 @@ const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'your-jwt-secret-key-change-in-production';
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://akki200416_db_user:ydgcGmEJLdoCr4Jr@cluster0.7algyhm.mongodb.net/?appName=Cluster0';
 // Middleware
-app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://your-frontend-domain.vercel.app', // Replace with your Vercel domain
-    'https://slot-swapper.vercel.app' // Example domain
-  ],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://slot-swapper-bxnfyjrbg-akshats-projects-a071b71d.vercel.app",  // your real frontend URL
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 // MongoDB Models
