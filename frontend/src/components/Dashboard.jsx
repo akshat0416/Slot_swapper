@@ -1,6 +1,6 @@
 // src/components/Dashboard.jsx
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from "../config/api";
 import EventForm from './EventForm';
 
 function Dashboard() {
@@ -13,7 +13,7 @@ function Dashboard() {
 
   const fetchEvents = async () => {
   try {
-    const response = await axios.get('/api/events');
+    const response = await api.get('/api/events');
     setEvents(Array.isArray(response.data) ? response.data : []);
   } catch (error) {
     console.error("Error fetching events:", error.response?.data || error);
@@ -31,7 +31,7 @@ function Dashboard() {
 
   const handleCreateEvent = async (eventData) => {
     try {
-      await axios.post('/api/events', eventData);
+      await api.post('/api/events', eventData);
       setShowForm(false);
       fetchEvents();
     } catch (error) {
@@ -42,7 +42,7 @@ function Dashboard() {
   const handleToggleSwappable = async (eventId, currentStatus) => {
     try {
       const newStatus = currentStatus === 'SWAPPABLE' ? 'BUSY' : 'SWAPPABLE';
-      await axios.put(`/api/events/${eventId}`, { status: newStatus });
+      await api.put(`/api/events/${eventId}`, { status: newStatus });
       fetchEvents();
     } catch (error) {
       setError('Failed to update event');
@@ -58,7 +58,7 @@ function Dashboard() {
     if (!eventToDelete) return;
 
     try {
-      await axios.delete(`/api/events/${eventToDelete._id || eventToDelete.id}`);
+      await api.delete(`/api/events/${eventToDelete._id || eventToDelete.id}`);
       setShowDeleteConfirm(false);
       setEventToDelete(null);
       fetchEvents();
