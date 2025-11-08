@@ -10,11 +10,13 @@ const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'your-jwt-secret-key-change-in-production';
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://akki200416_db_user:ydgcGmEJLdoCr4Jr@cluster0.7algyhm.mongodb.net/?appName=Cluster0';
 // Middleware
+
+// ✅ CORS FIX
 app.use(
   cors({
     origin: [
-      "http://localhost:3000",
-      "https://slot-swapper-git-main-akshats-projects-a071b71d.vercel.app", // <-- update with YOUR new frontend URL
+      "http://localhost:5173",
+      "https://slot-swapper-kc1qh80cv-akshats-projects-a071b71d.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -26,9 +28,7 @@ app.use(
 app.options("*", cors());
 
 app.use(express.json());
-
 app.set("trust proxy", 1);
-
 
 // MongoDB Models
 const UserSchema = new mongoose.Schema({
