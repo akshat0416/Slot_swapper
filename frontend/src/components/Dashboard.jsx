@@ -12,15 +12,18 @@ function Dashboard() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   const fetchEvents = async () => {
-    try {
-      const response = await axios.get('/api/events');
-      setEvents(response.data);
-    } catch (error) {
-      setError('Failed to fetch events');
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const response = await axios.get('/api/events');
+    setEvents(Array.isArray(response.data) ? response.data : []);
+  } catch (error) {
+    console.error("Error fetching events:", error.response?.data || error);
+    setEvents([]);  // prevent events.map crash
+    setError('Failed to fetch events');
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   useEffect(() => {
     fetchEvents();
