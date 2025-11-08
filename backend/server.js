@@ -11,14 +11,11 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-jwt-secret-key-change-in-prod
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://akki200416_db_user:ydgcGmEJLdoCr4Jr@cluster0.7algyhm.mongodb.net/?appName=Cluster0';
 // Middleware
 
-// ✅ MANUAL CORS FIX — WORKS WITH RENDER + ALL VERCEL DEPLOYS
+// ✅ CORS FIX — WORKS WITH RENDER + ALL VERCEL URLs
 app.use((req, res, next) => {
   const origin = req.headers.origin;
 
-  if (
-    origin &&
-    (origin.includes("vercel.app") || origin === "http://localhost:5173")
-  ) {
+  if (origin && (origin.endsWith(".vercel.app") || origin === "http://localhost:5173")) {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
 
@@ -27,11 +24,12 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Credentials", "true");
 
   if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
+    return res.sendStatus(200); // <-- REQUIRED for preflight requests
   }
 
   next();
 });
+
 
 
 app.use(express.json());
