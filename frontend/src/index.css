@@ -1,0 +1,868 @@
+/* src/index.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+  background: #f8fafc;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.btn-outline:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+/* Landing Page Styles */
+.landing-page {
+  min-height: 100vh;
+}
+
+/* Header */
+.landing-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e2e8f0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.landing-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.logo-icon {
+  font-size: 1.75rem;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 8rem 0 6rem;
+  margin-top: 4rem;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Features Section */
+.features-section {
+  padding: 6rem 0;
+  background: #f8fafc;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 3rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* How It Works Section */
+.how-it-works {
+  padding: 6rem 0;
+  background: white;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.step-card {
+  background: #f8fafc;
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.step-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.step-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.step-card p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.cta-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 2.5rem;
+}
+
+/* Footer */
+.landing-footer {
+  background: #1e293b;
+  color: white;
+  padding: 3rem 0 1rem;
+}
+
+.footer-content {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer-tagline {
+  opacity: 0.8;
+}
+
+.footer-bottom {
+  border-top: 1px solid #334155;
+  padding-top: 1rem;
+  text-align: center;
+  opacity: 0.6;
+}
+
+/* App Layout Styles */
+.header {
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1rem 0;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Card Styles */
+.card {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.slot-card {
+  transition: transform 0.2s ease;
+}
+
+.slot-card:hover {
+  transform: translateY(-2px);
+}
+
+.slot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.slot-title {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.slot-time {
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-busy {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.status-swappable {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.status-pending {
+  background: #fffbeb;
+  color: #d97706;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Alert Styles */
+.alert {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.alert-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-cols-1 {
+  grid-template-columns: 1fr;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: #64748b;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tab.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+}
+
+.tab:hover {
+  color: #1e293b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .features-grid,
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-cols-2,
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .cta-title {
+    font-size: 2rem;
+  }
+  
+  .modal-content {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.loading-spinner {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Logo & Brand Styles */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.nav-brand:hover {
+  transform: translateY(-1px);
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb;
+  letter-spacing: -0.025em;
+}
+
+/* Header specific styles */
+.landing-header .brand-name {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header .brand-name {
+  color: #2563eb;
+}
+
+/* Footer specific styles */
+.landing-footer .nav-brand {
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.landing-footer .brand-name {
+  color: white;
+  font-size: 1.75rem;
+}
+
+.landing-footer .logo {
+  width: 50px;
+  height: 50px;
+}
+
+.landing-footer .logo svg circle {
+  fill: white;
+}
+
+.landing-footer .logo svg path {
+  stroke: #2563eb;
+}
+
+/* Update main colors to use the blue theme */
+.hero-section,
+.cta-section {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Feature cards hover effect */
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+}
+
+/* Step cards */
+.step-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+/* Add Font Awesome CDN to your index.html first */
+/* Add this to your index.html head: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> */
+
+/* Logo & Brand Styles */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.nav-brand:hover {
+  transform: translateY(-1px);
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  background: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb;
+  letter-spacing: -0.025em;
+}
+
+/* Header specific styles */
+.landing-header .brand-name {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header .brand-name {
+  color: #2563eb;
+}
+
+/* Footer specific styles */
+.landing-footer .nav-brand {
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.landing-footer .brand-name {
+  color: white;
+  font-size: 1.75rem;
+  -webkit-text-fill-color: white;
+  background: none;
+}
+
+.landing-footer .logo {
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  background: white;
+  color: #2563eb;
+}
+
+.landing-footer .logo:hover {
+  background: #f8fafc;
+  color: #1d4ed8;
+}
+
+/* Update main colors to use the blue theme */
+.hero-section,
+.cta-section {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* Feature cards hover effect */
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+}
+
+/* Step cards */
+.step-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+/* Loading container */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+}
+
+.loading-spinner {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/* Delete button styles */
+.btn-danger {
+  background: #dc2626;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}
+
+.btn-danger:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Button icons */
+.btn i {
+  margin-right: 0.5rem;
+}
+
+/* Slot card actions */
+.slot-card .btn {
+  flex: 1;
+  min-width: 120px;
+  justify-content: center;
+}
+/* Small button variant */
+.btn-small {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+.btn-small i {
+  margin-right: 0;
+}
+
+/* Button icons */
+.btn i {
+  margin-right: 0.5rem;
+}
+
+.btn-small i {
+  margin-right: 0;
+}
+
+/* Slot card actions */
+.slot-card .btn {
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+/* Delete confirmation modal styles */
+.modal-overlay .modal-content {
+  max-width: 400px;
+}
+
+.modal-overlay .modal-content h3 {
+  color: #dc2626;
+}
+
+.modal-overlay .modal-content p {
+  line-height: 1.6;
+}
+
+/* Responsive button layout */
+@media (max-width: 640px) {
+  .slot-card .btn {
+    min-width: 100% !important;
+    flex: 1 0 100% !important;
+  }
+  
+  .btn-small {
+    padding: 0.75rem;
+  }
+}
