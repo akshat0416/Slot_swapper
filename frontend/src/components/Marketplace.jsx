@@ -1,6 +1,6 @@
 // src/components/Marketplace.jsx
 import React, { useState, useEffect } from 'react';
-import api from '../config/api';     // ✅ use configured axios instance
+import api from '../config/api';  
 import SwapModal from './SwapModal';
 
 function Marketplace() {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from "../config/api";
 
 function SwapModal({ targetSlot, mySlots, onComplete, onCancel }) {
   const [selectedMySlot, setSelectedMySlot] = useState('');
@@ -18,7 +18,7 @@ function SwapModal({ targetSlot, mySlots, onComplete, onCancel }) {
     setError('');
 
     try {
-      await axios.post('/api/swap-request', {
+      await api.post('/api/swap-request', {
         mySlotId: selectedMySlot,
         theirSlotId: targetSlot._id || targetSlot.id
       });
