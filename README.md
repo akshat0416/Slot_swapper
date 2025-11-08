@@ -93,6 +93,12 @@ npm install
 npm start
 
 
+Backend will run on:
+
+http://localhost:5000
+
+
+
 ### 3️⃣ Frontend Setup
 
 cd ../frontend
@@ -104,3 +110,29 @@ npm run dev
 The app will be available at:
 
 http://localhost:5173/
+
+
+🤝 Contributing
+
+Pull requests are welcome.
+
+Steps to contribute:
+
+1. Fork the repository
+
+2. Create a feature branch
+
+3. Commit your changes
+
+4. Open a pull request
+
+
+📄 License
+
+This project is licensed under the MIT License.
+
+
+✨ Developer
+
+👤 Akshat Rana
+🔗 GitHub: https://github.com/akshat0416
