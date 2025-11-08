@@ -14,13 +14,17 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://slot-swapper-bxnfyjrbg-akshats-projects-a071b71d.vercel.app",  // your real frontend URL
+      "http://localhost:5173",
+      "https://slot-swapper-bxnfyjrbg-akshats-projects-a071b71d.vercel.app"  // ✅ your vercel frontend
     ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// ✅ Add this line to allow preflight requests
+app.options("*", cors());
 
 app.use(express.json());
 
