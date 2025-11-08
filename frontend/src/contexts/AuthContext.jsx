@@ -1,7 +1,6 @@
 // src/contexts/AuthContext.jsx
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
-import API_CONFIG from "../config/api";   // ✅ <-- IMPORT BASE URL FROM .env CONFIG
+import React, { createContext, useState, useContext, useEffect } from "react";
+import api from "../config/api";   // ✅ USE THIS — axios instance already configured
 
 const AuthContext = createContext();
 
@@ -13,72 +12,70 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // ✅ create axios instance with backend URL
-  const api = axios.create(API_CONFIG);
-  
-  console.log("Backend URL →", API_CONFIG.baseURL);
-
-
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    const userData = localStorage.getItem('user');
-    
+    const token = localStorage.getItem("token");
+    const userData = localStorage.getItem("user");
+
     if (token && userData) {
       try {
         setUser(JSON.parse(userData));
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       } catch (error) {
-        console.error('Error parsing user data:', error);
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        console.error("Error parsing user data:", error);
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
       }
     }
-    
+
     setLoading(false);
   }, []);
 
   const login = async (email, password) => {
     try {
-      const response = await api.post('/api/auth/login', { email, password });
+      const response = await api.post("/api/auth/login", { email, password });
       const { token, user: userData } = response.data;
 
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(userData));
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(userData));
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       setUser(userData);
-      
+
       return { success: true };
     } catch (error) {
-      return { 
-        success: false, 
-        error: error.response?.data?.error || 'Login failed'
+      return {
+        success: false,
+        error: error.response?.data?.error || "Login failed",
       };
     }
   };
 
   const register = async (name, email, password) => {
     try {
-      const response = await api.post('/api/auth/register', { name, email, password });
+      const response = await api.post("/api/auth/register", {
+        name,
+        email,
+        password,
+      });
       const { token, user: userData } = response.data;
 
-      localStorage.setItem('token', token);
-      localStorage.setItem('user', JSON.stringify(userData));
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(userData));
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       setUser(userData);
 
       return { success: true };
     } catch (error) {
-      return { 
-        success: false, 
-        error: error.response?.data?.error || 'Registration failed'
+      return {
+        success: false,
+        error: error.response?.data?.error || "Registration failed",
       };
     }
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    delete api.defaults.headers.common['Authorization'];
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    delete api.defaults.headers.common["Authorization"];
     setUser(null);
   };
 
