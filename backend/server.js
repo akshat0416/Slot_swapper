@@ -11,32 +11,29 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-jwt-secret-key-change-in-prod
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://akki200416_db_user:ydgcGmEJLdoCr4Jr@cluster0.7algyhm.mongodb.net/?appName=Cluster0';
 // Middleware
 
-// ✅ CORS FIX
-// server.js — replace existing app.use(cors(...)) block with this
+// ✅ MANUAL CORS FIX — WORKS WITH RENDER + VERCEL
 const allowedOrigins = [
   "http://localhost:5173",
-  /\.vercel\.app$/,
+  "https://slot-swapper-akshats-projects-a071b71d.vercel.app", // your Vercel frontend
 ];
 
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true); // allow mobile apps / curl
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header("Access-Control-Allow-Origin", origin);
+  }
 
-      if (allowedOrigins.some((allowed) => allowed instanceof RegExp ? allowed.test(origin) : allowed === origin)) {
-        return callback(null, true);
-      }
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
 
-      return callback(new Error("Not allowed by CORS"));
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200);  // ✅ IMPORTANT: handles preflight
+  }
 
-// ✅ HANDLE PREFLIGHT (very important)
-app.options("*", cors());
+  next();
+});
+
 
 app.use(express.json());
 app.set("trust proxy", 1);
