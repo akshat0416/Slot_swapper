@@ -14,19 +14,21 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "http://localhost:5173",
-      "https://slot-swapper-bxnfyjrbg-akshats-projects-a071b71d.vercel.app"  // ✅ your vercel frontend
+      "https://slot-swapper-git-main-akshats-projects-a071b71d.vercel.app", // <-- update with YOUR new frontend URL
     ],
-    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
 
-// ✅ Add this line to allow preflight requests
+// ✅ Allow preflight OPTIONS request
 app.options("*", cors());
 
 app.use(express.json());
+
+app.set("trust proxy", 1);
+
 
 // MongoDB Models
 const UserSchema = new mongoose.Schema({
