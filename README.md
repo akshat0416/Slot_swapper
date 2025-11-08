@@ -9,8 +9,7 @@ Designed for teams, students, and workplaces where scheduling flexibility matter
 ## 🚀 Live Demo
 
 🔗 **Frontend (Vercel):**  
-https://slot-swapper-your-url.vercel.app  
-
+https://slot-swapper-8xdhoe6j9-akshats-projects-a071b71d.vercel.app
 🔗 **Backend (Render):**  
 https://slot-swapper-backend.onrender.com  
 
