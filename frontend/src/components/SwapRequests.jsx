@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from "../config/api";
 
 function SwapRequests() {
   const [incomingRequests, setIncomingRequests] = useState([]);
@@ -11,8 +11,8 @@ function SwapRequests() {
   const fetchRequests = async () => {
     try {
       const [incomingResponse, outgoingResponse] = await Promise.all([
-        axios.get('/api/swap-requests/incoming'),
-        axios.get('/api/swap-requests/outgoing')
+        api.get('/api/swap-requests/incoming'),
+        api.get('/api/swap-requests/outgoing')
       ]);
       
       setIncomingRequests(incomingResponse.data);
@@ -30,7 +30,7 @@ function SwapRequests() {
 
   const handleResponse = async (requestId, accepted) => {
     try {
-      await axios.post(`/api/swap-response/${requestId}`, { accepted });
+      await api.post(`/api/swap-response/${requestId}`, { accepted });
       fetchRequests();
     } catch (error) {
       setError(error.response?.data?.error || 'Failed to process response');
