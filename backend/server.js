@@ -142,19 +142,6 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-// Connect to MongoDB
-mongoose.connect(MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => {
-  console.log('✅ Connected to MongoDB Atlas successfully!');
-})
-.catch((error) => {
-  console.error('❌ MongoDB connection error:', error.message);
-  process.exit(1);
-});
-
 // Test route
 app.get('/api/test', (req, res) => {
   res.json({ 
