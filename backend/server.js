@@ -17,16 +17,20 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://slot-swapper-320eu4958-akshats-projects-a071b71d.vercel.app"  // ✅ correct URL
+      "https://slot-swapper-eyk23m76j-akshats-projects-a071b71d.vercel.app",
+      "https://slot-swapper-320eu4958-akshats-projects-a071b71d.vercel.app",
+      "https://slot-swapper-kc1qh80cv-akshats-projects-a071b71d.vercel.app",
+      /\.vercel\.app$/ // ✅ allows any vercel frontend deployment
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
+    credentials: true,
   })
 );
 
-// Allow preflight for all routes
+// allow preflight
 app.options("*", cors());
+
 
 
 app.use(express.json());
