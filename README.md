@@ -1,130 +1,106 @@
-# Slot Swapper
+# SlotSwapper ⏱️  
+A Peer-to-Peer Time Slot Swapping Platform
 
-A peer-to-peer time slot scheduling application that allows users to swap time slots with each other. Built with React for the frontend and Node.js with Express for the backend.
+SlotSwapper allows users to **create calendar events, mark them as swappable, and exchange time slots with others**.  
+Designed for teams, students, and workplaces where scheduling flexibility matters.
 
-## Features
+---
 
-- User authentication and authorization
-- Browse available time slots in the marketplace
-- Request to swap time slots with other users
-- Manage and respond to swap requests
-- Real-time updates for slot availability
+## 🚀 Live Demo
 
-## Tech Stack
+🔗 **Frontend (Vercel):**  
+https://slot-swapper-your-url.vercel.app  
 
-### Frontend
-- React 18
-- React Router v6
-- Axios for API requests
-- Vite as build tool
+🔗 **Backend (Render):**  
+https://slot-swapper-backend.onrender.com  
 
-### Backend
-- Node.js with Express
-- MongoDB with Mongoose
-- JWT for authentication
-- Bcrypt for password hashing
+---
 
-## Getting Started
+## 📌 Features
 
-### Prerequisites
+✅ User Authentication (Register/Login using JWT)  
+✅ Create, update & delete calendar events  
+✅ Mark event slots as `Swappable`  
+✅ Explore marketplace to view swappable slots from others  
+✅ Send & receive swap requests  
+✅ Accept/Reject swap requests — updates both calendars  
+✅ Fully responsive UI  
 
-- Node.js (v14 or higher)
-- npm or yarn
-- MongoDB Atlas account or local MongoDB instance
+---
 
-### Installation
+## 🛠️ Tech Stack
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/slot_swapper.git
-   cd slot_swapper
-   ```
+| Part | Technology |
+|------|------------|
+| Frontend | React + Vite + Context API + Axios |
+| Backend | Node.js + Express |
+| Database | MongoDB Atlas + Mongoose |
+| Authentication | JWT + bcrypt |
+| Deployment | Frontend on Vercel, Backend on Render |
 
-2. Set up the backend:
-   ```bash
-   cd backend
-   npm install
-   cp .env.example .env
-   # Update .env with your configuration
-   ```
+---
 
-3. Set up the frontend:
-   ```bash
-   cd ../frontend
-   npm install
-   cp .env.example .env
-   # Update .env with your API endpoint
-   ```
+## 📁 Folder Structure
 
-### Running Locally
+SlotSwapper/
+├── backend/
+│ ├── server.js
+│ ├── package.json
+│ └── .env
+│
+└── frontend/
+├── src/
+│ ├── components/
+│ ├── contexts/
+│ ├── config/api.js
+│ ├── App.jsx
+│ └── main.jsx
+├── package.json
+└── .env
 
-1. Start the backend server:
-   ```bash
-   cd backend
-   npm run dev
-   ```
+---
 
-2. Start the frontend development server:
-   ```bash
-   cd frontend
-   npm run dev
-   ```
+## ⚙️ Environment Variables
 
-3. Open your browser and navigate to `http://localhost:5173`
+### 👉 Backend (.env)
 
-## Environment Variables
-
-### Backend (`.env`)
-```
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
 PORT=5000
-NODE_ENV=development
-```
+MONGODB_URI=your_mongo_db_uri
+JWT_SECRET=your_jwt_secret
 
-### Frontend (`.env`)
-```
-VITE_API_BASE_URL=http://localhost:5000/api
-```
 
-## Project Structure
+### 👉 Frontend (.env)
 
-```
-slot_swapper/
-├── backend/               # Backend server code
-│   ├── config/           # Configuration files
-│   ├── controllers/      # Route controllers
-│   ├── middleware/       # Custom middleware
-│   ├── models/           # Database models
-│   ├── routes/           # API routes
-│   └── server.js         # Main server file
-├── frontend/             # Frontend React application
-│   ├── public/           # Static files
-│   └── src/
-│       ├── components/   # Reusable UI components
-│       ├── contexts/     # React contexts
-│       ├── pages/        # Page components
-│       ├── App.jsx       # Main App component
-│       └── main.jsx      # Application entry point
-└── README.md             # This file
-```
+VITE_API_URL=https://slot-swapper-backend.onrender.com
 
-## Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+---
 
-## License
+## 🔧 Installation & Setup (Local Development)
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### 1️⃣ Clone the repository
 
-## Acknowledgments
+```sh
+git clone https://github.com/akshat0416/SlotSwapper.git
+cd SlotSwapper
 
-- Built with ❤️ by Akshat Rana using modern web technologies
 
-## Support
 
-For support, please open an issue in the GitHub repository.
+###2️⃣ Backend Setup
+
+cd backend
+npm install
+npm start
+
+
+### 3️⃣ Frontend Setup
+
+cd ../frontend
+npm install
+npm run dev
+
+
+
+The app will be available at:
+
+http://localhost:5173/
