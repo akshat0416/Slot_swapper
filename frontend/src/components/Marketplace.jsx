@@ -1,5 +1,6 @@
+// src/components/Marketplace.jsx
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../config/api';     // ✅ use configured axios instance
 import SwapModal from './SwapModal';
 
 function Marketplace() {
@@ -13,13 +14,19 @@ function Marketplace() {
   const fetchData = async () => {
     try {
       const [slotsResponse, mySlotsResponse] = await Promise.all([
-        axios.get('/api/swappable-slots'),
-        axios.get('/api/events')
+        api.get('/api/swappable-slots'),  // ✅ uses baseURL + token
+        api.get('/api/events')
       ]);
-      
-      setSlots(slotsResponse.data);
-      setMySwappableSlots(mySlotsResponse.data.filter(slot => slot.status === 'SWAPPABLE'));
+
+      // ✅ ensure always arrays
+      setSlots(Array.isArray(slotsResponse.data) ? slotsResponse.data : []);
+      setMySwappableSlots(
+        Array.isArray(mySlotsResponse.data)
+          ? mySlotsResponse.data.filter(slot => slot.status === 'SWAPPABLE')
+          : []
+      );
     } catch (error) {
+      console.error(error);
       setError('Failed to fetch data');
     } finally {
       setLoading(false);
@@ -32,7 +39,7 @@ function Marketplace() {
 
   const handleRequestSwap = (slot) => {
     if (mySwappableSlots.length === 0) {
-      setError('You need to have at least one swappable slot to request a swap');
+      setError('You need at least one swappable slot to request a swap');
       return;
     }
     setSelectedSlot(slot);
@@ -58,15 +65,9 @@ function Marketplace() {
 
       {error && <div className="alert alert-error">{error}</div>}
 
-      {mySwappableSlots.length === 0 && (
-        <div className="alert alert-error">
-          You need to mark some of your slots as "Swappable" before you can request swaps.
-        </div>
-      )}
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {slots.map(slot => (
-          <div key={slot._id || slot.id} className="card slot-card swappable">
+          <div key={slot._id} className="card slot-card swappable">
             <div className="slot-header">
               <div style={{ flex: 1 }}>
                 <div className="slot-title">{slot.title}</div>
@@ -75,11 +76,8 @@ function Marketplace() {
                 </div>
               </div>
             </div>
-            
-            <div className="slot-owner">
-              Offered by: {slot.owner_name}
-            </div>
-            
+            <div className="slot-owner">Offered by: {slot.owner_name}</div>
+
             <button
               className="btn btn-primary"
               style={{ marginTop: '1rem', width: '100%' }}
@@ -94,7 +92,7 @@ function Marketplace() {
 
       {slots.length === 0 && (
         <div className="card" style={{ textAlign: 'center' }}>
-          <p>No swappable slots available from other users at the moment.</p>
+          <p>No swappable slots available.</p>
         </div>
       )}
 
