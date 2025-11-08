@@ -11,25 +11,23 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-jwt-secret-key-change-in-prod
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://akki200416_db_user:ydgcGmEJLdoCr4Jr@cluster0.7algyhm.mongodb.net/?appName=Cluster0';
 // Middleware
 
-// ✅ MANUAL CORS FIX — WORKS WITH RENDER + VERCEL
-const allowedOrigins = [
-  "http://localhost:5173",
-  /\.vercel\.app$/
-];
-
-
+// ✅ MANUAL CORS FIX — WORKS WITH RENDER + ALL VERCEL DEPLOYS
 app.use((req, res, next) => {
   const origin = req.headers.origin;
-  if (allowedOrigins.some(o => o instanceof RegExp ? o.test(origin) : o === origin)) {
-    res.header("Access-Control-Allow-Origin", origin);
+
+  if (
+    origin &&
+    (origin.includes("vercel.app") || origin === "http://localhost:5173")
+  ) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
   }
 
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
 
   if (req.method === "OPTIONS") {
-    return res.sendStatus(200);  // ✅ IMPORTANT: handles preflight
+    return res.sendStatus(200);
   }
 
   next();
