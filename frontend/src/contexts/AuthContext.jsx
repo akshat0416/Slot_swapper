@@ -15,6 +15,9 @@ export function AuthProvider({ children }) {
 
   // ✅ create axios instance with backend URL
   const api = axios.create(API_CONFIG);
+  
+  console.log("Backend URL →", API_CONFIG.baseURL);
+
 
   useEffect(() => {
     const token = localStorage.getItem('token');
