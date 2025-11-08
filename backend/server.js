@@ -7,11 +7,17 @@ const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const JWT_SECRET = 'your-jwt-secret-key-change-in-production';
-const MONGODB_URI = 'mongodb+srv://akki200416_db_user:ydgcGmEJLdoCr4Jr@cluster0.7algyhm.mongodb.net/?appName=Cluster0';
-
+const JWT_SECRET = process.env.JWT_SECRET || 'your-jwt-secret-key-change-in-production';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://akki200416_db_user:ydgcGmEJLdoCr4Jr@cluster0.7algyhm.mongodb.net/?appName=Cluster0';
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://your-frontend-domain.vercel.app', // Replace with your Vercel domain
+    'https://slot-swapper.vercel.app' // Example domain
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // MongoDB Models
@@ -105,7 +111,20 @@ const User = mongoose.model('User', UserSchema);
 const Event = mongoose.model('Event', EventSchema);
 const SwapRequest = mongoose.model('SwapRequest', SwapRequestSchema);
 
-// Middleware to verify JWT token
+// Enhanced MongoDB connection with better error handling
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('✅ Connected to MongoDB successfully!');
+})
+.catch((error) => {
+  console.error('❌ MongoDB connection error:', error.message);
+  process.exit(1);
+});
+
+// Middleware to verify JWT token (keep your existing middleware)
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
@@ -152,6 +171,7 @@ app.get('/api/health', async (req, res) => {
     
     res.json({
       status: 'OK',
+      environment: process.env.NODE_ENV || 'development',
       database: dbStates[dbState],
       timestamp: new Date().toISOString()
     });
@@ -161,6 +181,16 @@ app.get('/api/health', async (req, res) => {
       error: error.message
     });
   }
+});
+
+// Root route 
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'SlotSwapper Backend API',
+    version: '1.0.0',
+    environment: process.env.NODE_ENV || 'development',
+    documentation: '/api/health'
+  });
 });
 
 // Auth Routes
@@ -657,9 +687,9 @@ app.get('/api/swap-requests/outgoing', authenticateToken, async (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📊 Test: http://localhost:${PORT}/api/test`);
+  console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
   console.log(`❤️  Health: http://localhost:${PORT}/api/health`);
 });
 

@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "env": {
+    "VITE_API_URL": "https://slot-swapper-backend-kon5.onrender.com"
+  }
+}

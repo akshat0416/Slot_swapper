@@ -1,0 +1,25 @@
+# backend/render.yaml
+services:
+  - type: web
+    name: slots-swapper-backend
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        fromDatabase:
+          name: slots-swapper-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+
+databases:
+  - name: slots-swapper-db
+    plan: free
+    region: oregon
+    databaseName: slots_swapper
+    user: slots_swapper_user
