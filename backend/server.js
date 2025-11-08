@@ -16,8 +16,8 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://akki200416_db_user
 app.use(
   cors({
     origin: [
-      "http://localhost:5173", // Vite local dev (adjust if you use 3000)
-      "https://slot-swapper-kc1qh80cv-akshats-projects-a071b71d.vercel.app" // <-- your deployed frontend URL
+      "http://localhost:5173",
+      "https://slot-swapper-320eu4958-akshats-projects-a071b71d.vercel.app"  // ✅ correct URL
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
