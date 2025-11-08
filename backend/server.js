@@ -14,12 +14,13 @@ const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://akki200416_db_user
 // ✅ MANUAL CORS FIX — WORKS WITH RENDER + VERCEL
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://slot-swapper-akshats-projects-a071b71d.vercel.app", // your Vercel frontend
+  /\.vercel\.app$/
 ];
+
 
 app.use((req, res, next) => {
   const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
+  if (allowedOrigins.some(o => o instanceof RegExp ? o.test(origin) : o === origin)) {
     res.header("Access-Control-Allow-Origin", origin);
   }
 
