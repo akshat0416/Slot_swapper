@@ -39,24 +39,51 @@ https://slot-swapper-backend.onrender.com
 | Deployment | Frontend on Vercel, Backend on Render |
 
 ---
-
-## 📁 Folder Structure
-
-SlotSwapper/
+📂 Project Folder Structure
+```
+SLOT_SWAPPER/
+│
 ├── backend/
-│ ├── server.js
-│ ├── package.json
-│ └── .env
+│   ├── server.js
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── render.yaml
+│   ├── README.md
+│   └── .gitignore
 │
 └── frontend/
-├── src/
-│ ├── components/
-│ ├── contexts/
-│ ├── config/api.js
-│ ├── App.jsx
-│ └── main.jsx
-├── package.json
-└── .env
+    ├── public/
+    │   └── index.html
+    │
+    ├── src/
+    │   ├── components/
+    │   │   ├── Dashboard.jsx
+    │   │   ├── EventForm.jsx
+    │   │   ├── LandingPage.jsx
+    │   │   ├── Layout.jsx
+    │   │   ├── Login.jsx
+    │   │   ├── Marketplace.jsx
+    │   │   ├── Register.jsx
+    │   │   ├── SwapModal.jsx
+    │   │   └── SwapRequests.jsx
+    │   │
+    │   ├── config/
+    │   │   └── api.js
+    │   │
+    │   ├── contexts/
+    │   │   └── AuthContext.jsx
+    │   │
+    │   ├── App.jsx
+    │   ├── index.css
+    │   └── main.jsx
+    │
+    ├── package.json
+    ├── package-lock.json
+    ├── vite.config.js
+    ├── vercel.json
+    └── .gitignore
+
+```
 
 ---
 
@@ -69,48 +96,48 @@ MONGODB_URI=your_mongo_db_uri
 JWT_SECRET=your_jwt_secret
 
 
-### 👉 Frontend (.env)
+## 👉 Frontend (.env)
 
 VITE_API_URL=https://slot-swapper-backend.onrender.com
 
 
 ---
 
-## 🔧 Installation & Setup (Local Development)
+🔧 Installation & Setup (Local Development)
 
-### 1️⃣ Clone the repository
+1️⃣ Clone the repository
 
 ```sh
 git clone https://github.com/akshat0416/SlotSwapper.git
 cd SlotSwapper
+```
 
 
-
-###2️⃣ Backend Setup
-
+2️⃣ Backend Setup
+```
 cd backend
 npm install
 npm start
-
+```
 
 Backend will run on:
-
+```
 http://localhost:5000
+```
 
 
-
-### 3️⃣ Frontend Setup
-
+3️⃣ Frontend Setup
+```
 cd ../frontend
 npm install
 npm run dev
-
+```
 
 
 The app will be available at:
-
+```
 http://localhost:5173/
-
+```
 
 🤝 Contributing
 
@@ -135,4 +162,5 @@ This project is licensed under the MIT License.
 ✨ Developer
 
 👤 Akshat Rana
+
 🔗 GitHub: https://github.com/akshat0416
