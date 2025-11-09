@@ -12,7 +12,8 @@ Designed for teams, students, and workplaces where scheduling flexibility matter
 https://slot-swapper-8xdhoe6j9-akshats-projects-a071b71d.vercel.app
 
 🔗 **Backend (Render):**  
-https://slot-swapper-backend.onrender.com  
+https://slot-swapper-backend-kon5.onrender.com
+
 
 ---
 
